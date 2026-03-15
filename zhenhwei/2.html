@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>真好味 — 桃園中壢古早味小吃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a0f00;
+    --paper: #fdf6e9;
+    --warm: #c8400a;
+    --gold: #d4a017;
+    --muted: #8b6f47;
+    --light: #f0e8d5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, #3b1a00 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, #2a0d00 0%, transparent 60%),
+      #1a0f00;
+  }
+
+  /* decorative rice-grain pattern */
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle 1.5px at 20% 30%, rgba(212,160,23,.15) 100%, transparent),
+      radial-gradient(circle 1px at 70% 20%, rgba(212,160,23,.1) 100%, transparent),
+      radial-gradient(circle 2px at 50% 70%, rgba(200,64,10,.12) 100%, transparent),
+      radial-gradient(circle 1px at 85% 65%, rgba(212,160,23,.12) 100%, transparent);
+    background-size: 180px 180px, 250px 250px, 200px 200px, 300px 300px;
+  }
+
+  .hero-stripe {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--warm), var(--gold), var(--warm));
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeUp .9s ease both;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(212,160,23,.4);
+    color: var(--gold);
+    font-size: .75rem;
+    letter-spacing: .2em;
+    padding: .4rem 1.2rem;
+    margin-bottom: 2rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(5rem, 18vw, 12rem);
+    color: var(--paper);
+    line-height: .9;
+    letter-spacing: -.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span {
+    display: block;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--warm) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(.9rem, 2vw, 1.1rem);
+    color: rgba(253,246,233,.55);
+    letter-spacing: .15em;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: .6rem;
+  }
+
+  .hero-rating-text {
+    color: rgba(253,246,233,.5);
+    font-size: .85rem;
+    letter-spacing: .08em;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(253,246,233,.3);
+    font-size: .75rem;
+    letter-spacing: .2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    animation: pulse 2s ease infinite;
+  }
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(253,246,233,.3), transparent);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 7rem 2rem; }
+
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  .section-label {
+    font-size: .7rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  /* ── STORY ── */
+  .story { background: var(--paper); }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .story-text p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .story-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .stat-card {
+    border: 1px solid rgba(26,15,0,.1);
+    padding: 1.8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s;
+  }
+  .stat-card:hover { border-color: var(--warm); }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--warm), var(--gold));
+  }
+  .stat-number {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--warm);
+    line-height: 1;
+    margin-bottom: .3rem;
+  }
+  .stat-desc {
+    font-size: .85rem;
+    color: var(--muted);
+    letter-spacing: .05em;
+  }
+
+  /* ── MENU ── */
+  .menu { background: var(--ink); }
+  .menu .section-title { color: var(--paper); }
+  .menu .section-label { color: var(--gold); }
+
+  .menu-intro {
+    color: rgba(253,246,233,.5);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 4rem;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: rgba(253,246,233,.06);
+  }
+
+  .menu-item {
+    background: var(--ink);
+    padding: 2.2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background .3s;
+    cursor: default;
+  }
+  .menu-item:hover { background: #2a1800; }
+
+  .menu-item-emoji {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .menu-item-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: .6rem;
+  }
+  .menu-item-desc {
+    font-size: .82rem;
+    color: rgba(253,246,233,.4);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .menu-item-highlight {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: .65rem;
+    letter-spacing: .15em;
+    color: var(--gold);
+    border: 1px solid rgba(212,160,23,.3);
+    padding: .2rem .6rem;
+    text-transform: uppercase;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews { background: var(--light); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .review-card {
+    background: var(--paper);
+    padding: 2rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color .3s, transform .3s;
+    position: relative;
+  }
+  .review-card:hover {
+    border-color: var(--warm);
+    transform: translateY(-4px);
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: .9rem;
+    margin-bottom: 1rem;
+    letter-spacing: .1em;
+  }
+  .review-text {
+    font-size: .9rem;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .review-author {
+    font-size: .78rem;
+    color: var(--muted);
+    letter-spacing: .05em;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .review-author::before {
+    content: '';
+    display: inline-block;
+    width: 18px; height: 1px;
+    background: var(--muted);
+  }
+
+  .quote-mark {
+    position: absolute;
+    top: 1.2rem; right: 1.8rem;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(26,15,0,.04);
+    font-weight: 900;
+    pointer-events: none;
+  }
+
+  /* ── INFO ── */
+  .info { background: var(--paper); }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .info-block { margin-bottom: 2.5rem; }
+  .info-block-title {
+    font-size: .7rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: .8rem;
+    font-weight: 500;
+  }
+  .info-block-content {
+    font-size: .95rem;
+    color: var(--ink);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .info-block-content strong { font-weight: 500; color: var(--ink); }
+
+  .map-placeholder {
+    border: 1px solid rgba(26,15,0,.1);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: .85rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .map-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(rgba(240,232,213,.8), rgba(240,232,213,.8)),
+      repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(26,15,0,.04) 30px, rgba(26,15,0,.04) 31px),
+      repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(26,15,0,.04) 30px, rgba(26,15,0,.04) 31px);
+  }
+  .map-icon { font-size: 2.5rem; position: relative; }
+  .map-text { position: relative; letter-spacing: .1em; text-align: center; }
+  .map-link {
+    position: relative;
+    display: inline-block;
+    color: var(--warm);
+    text-decoration: none;
+    font-size: .8rem;
+    letter-spacing: .12em;
+    border-bottom: 1px solid var(--warm);
+    padding-bottom: 1px;
+    transition: opacity .2s;
+  }
+  .map-link:hover { opacity: .7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--paper);
+    margin-bottom: .5rem;
+  }
+  .footer-sub {
+    font-size: .8rem;
+    color: rgba(253,246,233,.3);
+    letter-spacing: .2em;
+    margin-bottom: 2rem;
+  }
+  .footer-divider {
+    width: 40px; height: 1px;
+    background: rgba(253,246,233,.15);
+    margin: 0 auto 2rem;
+  }
+  .footer-copy {
+    font-size: .75rem;
+    color: rgba(253,246,233,.2);
+    letter-spacing: .08em;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background .4s, backdrop-filter .4s;
+  }
+  nav.scrolled {
+    background: rgba(26,15,0,.92);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(253,246,233,.6);
+    text-decoration: none;
+    font-size: .82rem;
+    letter-spacing: .12em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: .4; }
+    50% { opacity: .9; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 680px) {
+    .story-grid, .info-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+    nav { padding: 1rem 1.5rem; }
+    section { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">真好味</a>
+  <ul class="nav-links">
+    <li><a href="#story">關於我們</a></li>
+    <li><a href="#menu">菜單</a></li>
+    <li><a href="#reviews">顧客評價</a></li>
+    <li><a href="#info">交通資訊</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-badge">桃園中壢 · 古早味小吃</div>
+    <h1><span>真好味</span></h1>
+    <p class="hero-sub">油飯・四神湯・炒米粉・麻油雞</p>
+    <div class="hero-stars">★★★★★</div>
+    <p class="hero-rating-text">4.7 分 · 18 則評價</p>
+  </div>
+  <div class="scroll-cue">向下探索</div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <p class="section-label">關於我們</p>
+        <h2 class="section-title">隱藏版古早味<br>飄香忠貞市場</h2>
+        <p>藏身忠貞市場附近的真好味，是中壢在地人口耳相傳的美食秘境。我們堅持以傳統手工製作每一道料理，用最樸實的食材，還原阿嬤廚房裡那份令人懷念的古早滋味。</p>
+        <p>招牌手工油飯 Q 彈飽滿、香氣迷人，搭配特製油蔥醬汁，每一口都是記憶中的家鄉味。老闆娘熱情招待，讓每位來訪的客人賓至如歸。</p>
+        <p>銅板價格，毫不妥協的品質——這就是真好味的承諾。</p>
+      </div>
+      <div class="story-visual reveal">
+        <div class="stat-card">
+          <div class="stat-number">4.7</div>
+          <div class="stat-desc">Google 評分 · 18 則真實評價</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">NT$200</div>
+          <div class="stat-desc">銅板美食 · 人均消費上限</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">古早味</div>
+          <div class="stat-desc">堅持手工製作 · 傳統配方不妥協</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <p class="section-label reveal">菜單精選</p>
+    <h2 class="section-title reveal">每一道都是<br>用心之作</h2>
+    <p class="menu-intro reveal">從招牌油飯到暖胃四神湯，每道料理都以最在地的食材，呈現最純粹的古早滋味。</p>
+    <div class="menu-grid reveal">
+      <div class="menu-item">
+        <span class="menu-item-emoji">🍚</span>
+        <div class="menu-item-highlight">招牌</div>
+        <div class="menu-item-name">手工油飯</div>
+        <div class="menu-item-desc">米粒 Q 彈不過油，特製油蔥醬汁畫龍點睛，份量十足，2–3 人共享剛剛好。</div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-emoji">🥣</span>
+        <div class="menu-item-name">四神湯</div>
+        <div class="menu-item-desc">精燉慢煮，湯頭清澈甘甜，暖胃又養生，中壢少見的好喝四神湯。</div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-emoji">🍜</span>
+        <div class="menu-item-name">炒米粉</div>
+        <div class="menu-item-desc">鑊氣十足，米粉吸飽湯汁精華，口感滑順，越吃越涮嘴。</div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-emoji">🍲</span>
+        <div class="menu-item-name">麻油雞</div>
+        <div class="menu-item-desc">麻油香氣濃郁，雞肉鮮嫩入味，溫補滋養，是秋冬最佳選擇。</div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-emoji">🥗</span>
+        <div class="menu-item-name">涼拌小菜</div>
+        <div class="menu-item-desc">清新爽口，以自製醬汁調味，清爽解膩，與油飯絕配。</div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item-emoji">🍝</span>
+        <div class="menu-item-name">炒麵</div>
+        <div class="menu-item-desc">現炒現上，麵條彈牙有嚼勁，老闆娘更不時讓客人免費試吃。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <p class="section-label reveal">顧客心聲</p>
+    <h2 class="section-title reveal">食客們怎麼說</h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">手工油飯香氣超迷人，米粒 Q 彈又不會太油，每一口都吃得到滿滿的古早味。配上特製油蔥和醬汁，越吃越想吃！</p>
+        <div class="review-author">中壢好吃鬼－美食部落客</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">終於找到一家好喝的四神湯！環境乾淨，老闆娘超客氣，請我們喝仙草茶和試吃炒麵，都好吃唷。</p>
+        <div class="review-author">yahsuan Hsieh · 本地嚮導</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">每盤都是銅板價，CP 值相當高。加一點老闆娘自製的特製辣椒，多點辛辣感，真的非常過癮。</p>
+        <div class="review-author">Chia-hsiu Che · 本地嚮導</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">油飯份量很夠，2–3 個人吃，而且很香。涼拌小菜清新爽口，不錯吃。</p>
+        <div class="review-author">Jinbin Zhou</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info" id="info">
+  <div class="container">
+    <div class="info-grid">
+      <div class="reveal">
+        <p class="section-label">交通與資訊</p>
+        <h2 class="section-title">來找我們</h2>
+        <div class="info-block">
+          <div class="info-block-title">地址</div>
+          <div class="info-block-content">320 台灣桃園市中壢區<br><strong>龍東路 196 號對面</strong></div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">營業時間</div>
+          <div class="info-block-content">
+            <strong>週二至週日</strong> 06:00 起<br>
+            <span style="color:var(--muted);font-size:.85rem;">（週一公休）</span>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">用餐方式</div>
+          <div class="info-block-content">堂食 · 外帶皆可</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">人均消費</div>
+          <div class="info-block-content"><strong>NT$1–200</strong> 銅板美食</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="map-placeholder">
+          <span class="map-icon">📍</span>
+          <div class="map-text">
+            桃園市中壢區龍東路 196 號對面<br>
+            <span style="font-size:.78rem;opacity:.6;margin-top:.3rem;display:block;">W7H3+X6 龍平里 台灣桃園市</span>
+          </div>
+          <a class="map-link" href="https://maps.app.goo.gl/xnxynkodKcVWJYYYA" target="_blank" rel="noopener">在 Google 地圖中開啟 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">真好味</div>
+  <div class="footer-sub">桃園中壢 · 古早味小吃</div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">© 2025 真好味 · 320 台灣桃園市中壢區龍東路 196 號對面</div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

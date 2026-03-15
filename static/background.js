@@ -199,7 +199,8 @@
         });
     }
 
-    window.addEventListener('resize', init);
+    // 移除 resize 事件，避免滚动时重置粒子
+    // window.addEventListener('resize', init);
 
     init();
     animate();
