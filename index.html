@@ -1,67 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>her3</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./static/style.css">
-    <script src="./static/background.js" defer></script>
-    <script src="./static/script.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f5">
+  <meta name="description" content="her3 — Developer / Trader. Stay focused, stay humble. 个人项目、代码与探索。">
+  <meta property="og:title" content="I am her3.">
+  <meta property="og:description" content="Developer / Trader · Taoyuan, Taiwan. 代码、市场，以及值得保持的好奇心。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://page.her3.xyz/">
+  <title>I am her3.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23faf9f5'/%3E%3Ctext x='15' y='49' fill='%23141413' font-family='Georgia' font-size='52'%3Eh%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://www.anthropic.com" crossorigin>
+  <style>
+    /* Public reference font URLs; not bundled or redistributed. Local fallbacks work offline. */
+    @font-face{font-family:AnthropicSans;src:url('https://www.anthropic.com/_next/static/media/AnthropicSans_Roman_Web-s.p.1e3n6bt4oqimz.woff2') format('woff2');font-style:normal;font-display:swap}
+    @font-face{font-family:AnthropicSerif;src:url('https://www.anthropic.com/_next/static/media/AnthropicSerif_Roman_Web-s.p.0twp0vwi-lncj.woff2') format('woff2');font-style:normal;font-display:swap}
+    @font-face{font-family:AnthropicMono;src:url('https://www.anthropic.com/_next/static/media/AnthropicMono_Roman_Web-s.p.16xhthj2n-pap.woff2') format('woff2');font-style:normal;font-display:swap}
+    :root{color-scheme:light;--paper:#faf9f5;--ink:#141413;--secondary:#5e5d59;--muted:#87867f;--rule:#dedcd1;--soft:#f0eee6;--clay:#d97757;--sans:AnthropicSans,Arial,"PingFang SC","Microsoft YaHei",sans-serif;--serif:AnthropicSerif,Georgia,"Songti SC","Noto Serif CJK SC",serif;--mono:AnthropicMono,"Courier New",monospace}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:112px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}::selection{background:#ebcece;color:var(--ink)}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a,button{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible{outline:2px solid var(--clay);outline-offset:6px}a,button{touch-action:manipulation}.wrap{width:min(1160px,calc(100% - 96px));margin-inline:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.skip{position:fixed;top:-80px;left:20px;padding:12px 20px;background:var(--ink);color:var(--paper);z-index:100}.skip:focus{top:12px}.arrow{display:inline-block;font-family:Arial,sans-serif;font-weight:400;transition:transform .2s}a:hover .arrow{transform:translate(2px,-2px)}
+    .site-header{height:96px;position:sticky;top:0;z-index:20;background:var(--paper)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}.home{display:flex;align-items:center;flex:0 0 220px;min-height:44px}.wordmark{position:relative;height:1.3em;font:700 30px/1.3 var(--sans);letter-spacing:-1.35px;isolation:isolate}.glyph{position:absolute;left:0;top:0;transform:translate3d(var(--full-x,0px),0,0);transform-origin:left center;opacity:1;white-space:pre}.face{display:block}.wordmark.ready .glyph{transition:transform 650ms cubic-bezier(.76,0,.24,1),opacity 240ms ease}.wordmark.ready .face{transition:opacity 230ms ease,transform 420ms cubic-bezier(.22,1,.36,1)}.wordmark.is-collapsed .glyph{transform:translate3d(var(--short-x,0px),0,0)}.wordmark.is-collapsed .drop{opacity:0;transform:translate3d(var(--short-x,0px),0,0) scaleX(.4);pointer-events:none}.keep{z-index:2}.drop{z-index:1}.nav-links{display:flex;gap:32px;align-items:center;font-size:14px}.nav-links>a:not(.contact-link){padding-block:10px;color:var(--secondary)}.nav-links>a:hover{color:var(--ink)}.contact-link{border:1px solid var(--rule);border-radius:99px;padding:7px 17px;display:flex;gap:18px;align-items:center;transition:background .2s}.contact-link:hover{background:var(--soft)}
+    .hero{padding:78px 0 82px}.hero-meta{display:flex;align-items:center;justify-content:space-between;gap:20px;font:13px/1.6 var(--mono);letter-spacing:.045em;color:var(--secondary);text-transform:uppercase}.role{display:flex;align-items:center;gap:12px}.asterisk{font-family:Georgia,serif;font-size:29px;color:var(--clay);line-height:1}.hero-main{display:grid;grid-template-columns:1fr 258px;align-items:center;gap:70px;margin-top:41px}.hero h1{font:400 clamp(54px,6.2vw,86px)/1.04 var(--serif);letter-spacing:-.045em;margin:0;max-width:850px}.hero h1 span{display:block}.hero h1 .second-line{margin-top:7px}.hero-note{max-width:470px;color:var(--secondary);margin:28px 0 0;line-height:1.85;font-size:15px}.hero-links{display:flex;gap:27px;align-items:center;margin-top:28px;font-size:14px}.hero-links>a{display:inline-flex;align-items:center;gap:13px;border-bottom:1px solid var(--ink);padding-bottom:4px}.hero-links>a:last-child{color:var(--secondary);border-color:var(--rule)}.art{position:relative;width:258px;height:270px;display:grid;place-items:center}.art svg{width:100%;height:auto;overflow:visible}.art .caption{position:absolute;bottom:0;right:8px;font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:25px 0 26px;border-top:1px solid var(--ink)}.section-label{font:13px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;margin:0;font-weight:400}.section-count{color:var(--muted);margin-left:10px}.section-head>a{font-size:13px;color:var(--secondary);display:flex;gap:10px;align-items:center}.projects{padding-bottom:90px}.project{display:grid;grid-template-columns:52px 1fr 252px;gap:22px;padding:36px 0 39px;border-top:1px solid var(--rule);position:relative}.project::before{content:"";position:absolute;inset:0 -20px;border-radius:12px;z-index:-1;background:var(--soft);opacity:0;transition:opacity .25s}.project:hover::before{opacity:1}.project-number{padding-top:8px;font:13px/1.6 var(--mono);color:var(--muted)}.project h3{font-size:27px;letter-spacing:-.045em;line-height:1.2;font-weight:500;margin:3px 0 12px;overflow-wrap:anywhere}.project p{font-size:14px;color:var(--secondary);margin:0;max-width:525px;line-height:1.8}.project-meta{margin-top:20px;display:flex;gap:16px;align-items:center;font:12px/1.5 var(--mono);color:var(--secondary);text-transform:uppercase;letter-spacing:.02em;flex-wrap:wrap}.tag{border:1px solid var(--rule);padding:3px 8px;border-radius:4px}.project-side{display:flex;align-items:center;justify-content:flex-end;gap:28px}.project-icon{width:138px;height:100px}.project-go{font-size:24px;line-height:1;width:40px;text-align:right}.project .stretched{position:absolute;inset:0;z-index:3;border-radius:8px}.project .stretched:hover~.project-side .arrow{transform:translate(3px,-3px)}
+    .about{padding:0 0 100px;display:grid;grid-template-columns:1fr 2fr;gap:60px}.about .section-label{padding-top:8px}.about-copy{max-width:690px}.about-intro{font:400 31px/1.45 var(--serif);letter-spacing:-.025em;margin:0 0 23px}.about-copy>p:not(.about-intro){color:var(--secondary);font-size:14px;line-height:1.95;margin:0;max-width:580px}.about-copy .location{font:13px/1.8 var(--mono);color:var(--muted);margin-top:25px}.elsewhere{background:var(--soft);padding:58px 0 54px}.elsewhere-top{display:flex;justify-content:space-between;gap:40px;align-items:flex-start}.elsewhere h2{font:400 clamp(36px,4.5vw,56px)/1.12 var(--serif);letter-spacing:-.045em;margin:18px 0 0}.elsewhere-intro{font-size:14px;color:var(--secondary);line-height:1.8;margin:40px 0 0;max-width:290px}.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:46px}.social{border-top:1px solid #c2c0b6;padding-top:18px;display:flex;align-items:flex-start;justify-content:space-between;gap:15px;min-height:78px}.social strong{font-size:17px;font-weight:500;letter-spacing:-.025em}.social small{display:block;color:var(--secondary);font-size:13px;margin-top:3px}.social>.arrow{font-size:20px}.footer{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:93px;font:12px/1.8 var(--mono);color:var(--secondary)}.footer-brand{font:500 15px/1.5 var(--sans);letter-spacing:-.035em;color:var(--ink)}.footer-end{display:flex;gap:32px;align-items:center}.back-top{background:none;border:0;padding:8px 0;font:inherit;display:flex;gap:10px;align-items:center}
+    @media(min-width:1600px){.hero{padding-top:95px;padding-bottom:100px}}
+    @media(max-width:1000px){.wrap{width:calc(100% - 64px)}.hero-main{grid-template-columns:1fr 205px;gap:30px}.art{width:205px;height:240px}.hero h1{font-size:68px}.project{grid-template-columns:40px 1fr 165px;gap:16px}.project-icon{width:105px}.project-side{gap:10px}.about{gap:35px}.about-intro{font-size:28px}.nav-links{gap:24px}}
+    @media(max-width:720px){html{scroll-padding-top:90px}.wrap{width:calc(100% - 40px)}.site-header{height:80px}.home{flex-basis:174px}.wordmark{font-size:26px;letter-spacing:-1.1px}.nav{gap:12px}.nav-links{gap:17px;font-size:12px}.contact-link{display:none}.hero{padding:36px 0 55px}.hero-meta{font-size:13px}.hero-meta .place{display:none}.asterisk{font-size:25px}.hero-main{grid-template-columns:1fr;gap:0;margin-top:31px}.hero h1{font-size:clamp(49px,10.5vw,74px)}.hero-note{font-size:14px;max-width:430px;margin-top:25px}.hero-links{font-size:13px;margin-top:23px}.art{display:none}.section-head{padding:21px 0}.section-label{font-size:13px}.section-head>a{font-size:13px}.project{grid-template-columns:26px 1fr 27px;gap:12px;padding:29px 0 31px}.project h3{font-size:22px;margin-top:3px}.project p{font-size:13px}.project-meta{font-size:12px;gap:11px;margin-top:16px}.project-icon{display:none}.project-go{width:25px;font-size:22px}.project-side{align-items:flex-start;padding-top:1px}.project::before{inset:0 -10px}.projects{padding-bottom:61px}.about{grid-template-columns:1fr;gap:25px;padding-bottom:62px}.about .section-label{border-top:1px solid var(--ink);padding-top:22px}.about-intro{font-size:27px;line-height:1.4;margin-bottom:19px}.about-copy>p:not(.about-intro){font-size:13px}.about-copy .location{margin-top:19px}.elsewhere{padding:38px 0 31px}.elsewhere-top{display:block}.elsewhere h2{font-size:39px;margin-top:15px}.elsewhere-intro{font-size:13px;margin-top:21px;max-width:400px}.socials{grid-template-columns:1fr;gap:0;margin-top:30px}.social{min-height:85px;padding:16px 0}.social strong{font-size:16px}.social small{font-size:13px}.footer{min-height:97px;font-size:12px}.footer-end{gap:18px}.footer-end .footer-note{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
 </head>
 <body>
-
-    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme">
-        <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
-
-    <div class="container">
-        <header>
-            <div class="avatar" id="avatarClick"></div>
-            <h1>her3</h1>
-            <p class="bio">
-                Stay Focused, Stay Humble.<br>
-                Developer / Trader
-            </p>
-        </header>
-
-        <nav class="links">
-            <a href="#" class="link-item" data-url="https://www.instagram.com/zybher3/">
-                <span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span>
-                <span>Instagram</span>
-                <span class="link-desc">Sharing</span>
-            </a>
-            <a href="#" class="link-item" data-url="https://github.com/zhou-hack/">
-                <span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></span>
-                <span>GitHub</span>
-                <span class="link-desc">Developing</span>
-            </a>
-            <a href="#" class="link-item" data-url="https://t.me/flt231">
-                <span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></span>
-                <span>Telegram</span>
-                <span class="link-desc">Communicating</span>
-            </a>
-        </nav>
-
-        <footer>
-            <p>&copy; 2026 her3</p>
-        </footer>
-    </div>
-
+  <a class="skip" href="#main">跳至主要内容</a>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="主导航">
+      <a class="home" href="#top" aria-label="I am her3.，返回首页顶部">
+        <span class="wordmark" data-expanded="I am her3." data-compact="her3" aria-hidden="true"><span class="glyph drop" data-char="I"><span class="face">I</span></span><span class="glyph drop" data-char=" "><span class="face"> </span></span><span class="glyph drop" data-char="a"><span class="face">a</span></span><span class="glyph drop" data-char="m"><span class="face">m</span></span><span class="glyph drop" data-char=" "><span class="face"> </span></span><span class="glyph keep" data-char="h" data-keep="h"><span class="face">h</span></span><span class="glyph keep" data-char="e" data-keep="e"><span class="face">e</span></span><span class="glyph keep" data-char="r" data-keep="r"><span class="face">r</span></span><span class="glyph keep" data-char="3" data-keep="3"><span class="face">3</span></span><span class="glyph drop" data-char="."><span class="face">.</span></span></span>
+      </a>
+      <div class="nav-links"><a href="#work">项目</a><a href="#about">关于</a><a href="#elsewhere" class="contact-link">找到我 <span class="arrow" aria-hidden="true">↗</span></a></div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="top"></div>
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-meta"><span class="role"><span class="asterisk" aria-hidden="true">✳</span> HER3 · DEVELOPER / TRADER</span><span class="place">TAOYUAN, TAIWAN · UTC+8</span></div>
+      <div class="hero-main">
+        <div>
+          <h1 id="hero-title"><span>Stay focused.</span><span class="second-line">Stay humble.</span></h1>
+          <p class="hero-note">你好，我是 her3。一名开发者，也是一名交易者。<br>用代码实践想法，在市场中保持好奇。</p>
+          <div class="hero-links"><a href="#work">看看我的项目 <span class="arrow" aria-hidden="true">↗</span></a><a href="https://github.com/zhou-hack" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 258 248" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M207 60c-29-29-115-5-140 31-38 55 14 110 75 104 67-7 87-62 55-99-25-30-93-36-122-6-40 41-4 96 46 104 59 9 101-34 87-76-11-34-62-64-101-43-47 25-32 86 15 111 46 24 102 0 106-43 3-39-39-79-82-74-52 6-61 66-27 104 39 44 102 31 118-8 17-40-11-89-53-97-49-10-77 39-62 83 20 58 86 69 120 36" stroke="#3d3d3a" stroke-width="1.05" stroke-linecap="round"/>
+            <path d="M206 60c-31-25-109-2-135 33-37 50 12 108 70 101 64-8 84-60 53-96-25-29-90-32-119-5-36 36-3 91 47 100 56 10 99-32 85-72" stroke="#3d3d3a" stroke-width=".55" opacity=".55"/>
+            <path d="M76 55v141M187 50v147M51 171h168" stroke="#87867f" stroke-width=".6" opacity=".45"/>
+            <circle cx="76" cy="171" r="5" fill="#d97757"/><path d="m181 43 6 7 8-5" stroke="#87867f" stroke-width=".7"/>
+          </svg><span class="caption">A WORK IN PROGRESS, ALWAYS.</span>
+        </div>
+      </div>
+    </section>
+    <section class="wrap projects" id="work" aria-labelledby="work-title">
+      <div class="section-head"><h2 class="section-label" id="work-title">SELECTED WORK <span class="section-count">/ 精选项目</span></h2><a href="https://github.com/zhou-hack?tab=repositories" target="_blank" rel="noopener noreferrer">全部项目 <span class="arrow" aria-hidden="true">↗</span></a></div>
+      <article class="project">
+        <span class="project-number">01</span><div><h3>humanize-agent</h3><p>一个专注于长期记忆的 TypeScript Agent。<br>让持续交互中有价值的信息，成为下一次对话的起点。</p><div class="project-meta"><span class="tag">TYPESCRIPT</span><span>AI AGENT / LONG-TERM MEMORY</span></div></div>
+        <a class="stretched" href="https://github.com/zhou-hack/humanize-agent" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 humanize-agent（新窗口）"></a>
+        <div class="project-side" aria-hidden="true"><svg class="project-icon" viewBox="0 0 138 100" fill="none"><rect x="42" y="20" width="51" height="63" rx="3" stroke="#3d3d3a" stroke-width="1.1"/><path d="M50 20v-7h51v62h-8M51 35h32M51 44h32M51 53h19M52 73l10-10m0 10-10-10" stroke="#3d3d3a" stroke-width="1"/><circle cx="109" cy="35" r="9" stroke="#d97757" stroke-width="1.2"/><path d="M102 42 87 57M28 62h14M28 62v15" stroke="#b0aea5" stroke-width="1"/><circle cx="28" cy="79" r="4" fill="#d97757"/></svg><span class="project-go arrow">↗</span></div>
+      </article>
+      <article class="project">
+        <span class="project-number">02</span><div><h3>Telegram to HomePod</h3><p>用 Telegram 控制 HomePod，播放 YouTube 音乐。<br>让熟悉的工具之间，多一点连接。</p><div class="project-meta"><span class="tag">PYTHON</span><span>TELEGRAM / YT-DLP / HOMEPOD</span></div></div>
+        <a class="stretched" href="https://github.com/zhou-hack/telegram2homepod" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 Telegram to HomePod（新窗口）"></a>
+        <div class="project-side" aria-hidden="true"><svg class="project-icon" viewBox="0 0 138 100" fill="none"><path d="M19 39v22m8-32v43m8-54v64m8-49v34m8-20v8m8-25v44m8-57v65m8-47v30m8-15v8m8-26v47m8-60v70m8-57v42m8-33v23m8-16v10" stroke="#3d3d3a" stroke-width="1.1" stroke-linecap="round"/><path d="M67 17v65" stroke="#d97757" stroke-width="2"/><circle cx="67" cy="17" r="3.4" fill="#d97757"/></svg><span class="project-go arrow">↗</span></div>
+      </article>
+    </section>
+    <section class="wrap about" id="about" aria-labelledby="about-title">
+      <h2 class="section-label" id="about-title">A LITTLE ABOUT ME <span class="section-count">/ 关于</span></h2>
+      <div class="about-copy"><p class="about-intro">代码、市场，<br>以及值得保持的好奇心。</p><p>我在这里记录自己的项目与探索。从 AI Agent 到日常自动化，我关心技术如何成为真正能用的工具。专注于正在做的事，也对还不理解的事保持谦逊。</p><p class="location">BASED IN TAOYUAN, TAIWAN.</p></div>
+    </section>
+    <section class="elsewhere" id="elsewhere" aria-labelledby="elsewhere-title">
+      <div class="wrap"><div class="elsewhere-top"><div><p class="section-label">ELSEWHERE / 保持连接</p><h2 id="elsewhere-title">Good things start<br>with a conversation.</h2></div><p class="elsewhere-intro">看看代码，分享想法，或只是打个招呼。<br>你可以在这些地方找到我。</p></div>
+      <div class="socials"><a class="social" href="https://github.com/zhou-hack" target="_blank" rel="noopener noreferrer"><span><strong>GitHub</strong><small>代码与开源项目 · @zhou-hack</small></span><span class="arrow" aria-hidden="true">↗</span></a><a class="social" href="https://t.me/flt231" target="_blank" rel="noopener noreferrer"><span><strong>Telegram</strong><small>交流与联系 · @flt231</small></span><span class="arrow" aria-hidden="true">↗</span></a><a class="social" href="https://www.instagram.com/zybher3/" target="_blank" rel="noopener noreferrer"><span><strong>Instagram</strong><small>日常与分享 · @zybher3</small></span><span class="arrow" aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap footer"><a class="footer-brand" href="#top">her3.</a><span>© <span id="year">2026</span> her3</span><div class="footer-end"><span class="footer-note">STAY FOCUSED, STAY HUMBLE.</span><button class="back-top" id="back-top" type="button">回到顶部 <span aria-hidden="true">↑</span></button></div></footer>
+  <script>
+    (() => {
+      const mark = document.querySelector('.wordmark');
+      const glyphs = [...mark.querySelectorAll('.glyph')];
+      const context = document.createElement('canvas').getContext('2d');
+      let collapsed = null;
+      function measure() {
+        const style = getComputedStyle(mark);
+        context.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        const spacing = parseFloat(style.letterSpacing) || 0;
+        let fullX = 0, shortX = 0;
+        glyphs.forEach(glyph => {
+          glyph.style.setProperty('--full-x', `${fullX}px`);
+          glyph.style.setProperty('--short-x', `${shortX}px`);
+          fullX += context.measureText(glyph.dataset.char).width + spacing;
+          if (glyph.dataset.keep) shortX += context.measureText(glyph.dataset.keep).width + spacing;
+        });
+        mark.style.width = `${fullX - spacing}px`;
+      }
+      function update() {
+        const next = window.scrollY > 15;
+        if (next === collapsed) return;
+        collapsed = next;
+        mark.classList.toggle('is-collapsed', next);
+        mark.dataset.state = next ? mark.dataset.compact : mark.dataset.expanded;
+        mark.closest('a').setAttribute('aria-label', `${mark.dataset.state}，返回首页顶部`);
+      }
+      measure(); update();
+      requestAnimationFrame(() => requestAnimationFrame(() => mark.classList.add('ready')));
+      document.fonts.ready.then(measure);
+      new ResizeObserver(measure).observe(document.documentElement);
+      window.addEventListener('scroll', update, {passive:true});
+      document.getElementById('back-top').addEventListener('click', () => window.scrollTo({top:0}));
+      document.querySelectorAll('a[href="#top"]').forEach(link => link.addEventListener('click', event => {event.preventDefault();window.scrollTo({top:0});}));
+      document.getElementById('year').textContent = new Intl.DateTimeFormat('en',{year:'numeric',timeZone:'Asia/Taipei'}).format(new Date());
+    })();
+  </script>
 </body>
 </html>
