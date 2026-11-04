@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="is-loading">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,14 +12,18 @@
   <title>here is her3.</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23faf9f5'/%3E%3Ctext x='15' y='49' fill='%23141413' font-family='Georgia' font-size='52'%3Eh%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://www.anthropic.com" crossorigin>
+  <link rel="preload" href="./static/Redaction-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./static/Windsor-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <style>
-    /* Public reference font URLs; not bundled or redistributed. Local fallbacks work offline. */
+    /* Redaction 与 Windsor 使用本地字体；其余字体使用公开 URL，并提供本地回退。 */
+    @font-face{font-family:Redaction;src:url('./static/Redaction-Bold.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+    @font-face{font-family:Windsor;src:url('./static/Windsor-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
     @font-face{font-family:AnthropicSans;src:url('https://www.anthropic.com/_next/static/media/AnthropicSans_Roman_Web-s.p.1e3n6bt4oqimz.woff2') format('woff2');font-style:normal;font-display:swap}
     @font-face{font-family:AnthropicSerif;src:url('https://www.anthropic.com/_next/static/media/AnthropicSerif_Roman_Web-s.p.0twp0vwi-lncj.woff2') format('woff2');font-style:normal;font-display:swap}
     @font-face{font-family:AnthropicMono;src:url('https://www.anthropic.com/_next/static/media/AnthropicMono_Roman_Web-s.p.16xhthj2n-pap.woff2') format('woff2');font-style:normal;font-display:swap}
     :root{color-scheme:light;--paper:#faf9f5;--ink:#141413;--secondary:#5e5d59;--muted:#87867f;--rule:#dedcd1;--soft:#f0eee6;--clay:#d97757;--sans:AnthropicSans,Arial,"PingFang SC","Microsoft YaHei",sans-serif;--serif:AnthropicSerif,Georgia,"Songti SC","Noto Serif CJK SC",serif;--mono:AnthropicMono,"Courier New",monospace}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:112px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}::selection{background:#ebcece;color:var(--ink)}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a,button{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible{outline:2px solid var(--clay);outline-offset:6px}a,button{touch-action:manipulation}.wrap{width:min(1160px,calc(100% - 96px));margin-inline:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.skip{position:fixed;top:-80px;left:20px;padding:12px 20px;background:var(--ink);color:var(--paper);z-index:100}.skip:focus{top:12px}.arrow{display:inline-block;font-family:Arial,sans-serif;font-weight:400;transition:transform .2s}a:hover .arrow{transform:translate(2px,-2px)}
-    .site-header{height:96px;position:sticky;top:0;z-index:20;background:var(--paper)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}.home{display:flex;align-items:center;flex:0 0 220px;min-height:44px}.wordmark{position:relative;height:1.3em;font:700 30px/1.3 var(--sans);letter-spacing:-1.35px;isolation:isolate}.glyph{position:absolute;left:0;top:0;transform:translate3d(var(--full-x,0px),0,0);transform-origin:left center;opacity:1;white-space:pre}.face{display:block}.wordmark.ready .glyph{transition:transform 650ms cubic-bezier(.76,0,.24,1),opacity 240ms ease}.wordmark.ready .face{transition:opacity 230ms ease,transform 420ms cubic-bezier(.22,1,.36,1)}.wordmark.is-collapsed .glyph{transform:translate3d(var(--short-x,0px),0,0)}.wordmark.is-collapsed .drop{opacity:0;transform:translate3d(var(--short-x,0px),0,0) scaleX(.4);pointer-events:none}.keep{z-index:2}.drop{z-index:1}.nav-links{display:flex;gap:32px;align-items:center;font-size:14px}.nav-links>a:not(.contact-link){padding-block:10px;color:var(--secondary)}.nav-links>a:hover{color:var(--ink)}.contact-link{border:1px solid var(--rule);border-radius:99px;padding:7px 17px;display:flex;gap:18px;align-items:center;transition:background .2s}.contact-link:hover{background:var(--soft)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:112px;scrollbar-gutter:stable}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}::selection{background:#ebcece;color:var(--ink)}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a,button{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible{outline:2px solid var(--clay);outline-offset:6px}a,button{touch-action:manipulation}.wrap{width:min(1160px,calc(100% - 96px));margin-inline:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.skip{position:fixed;top:-80px;left:20px;padding:12px 20px;background:var(--ink);color:var(--paper);z-index:100}.skip:focus{top:12px}.arrow{display:inline-block;font-family:Arial,sans-serif;font-weight:400;transition:transform .2s}a:hover .arrow{transform:translate(2px,-2px)}
+    .site-header{height:96px;position:sticky;top:0;z-index:20;background:var(--paper)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}.home{display:flex;align-items:center;flex:0 0 220px;min-height:44px}.wordmark{position:relative;height:1.3em;font:700 30px/1.3 Redaction,var(--serif);letter-spacing:-1.35px;isolation:isolate}.glyph{position:absolute;left:0;top:0;transform:translate3d(var(--full-x,0px),0,0);transform-origin:left center;opacity:1;white-space:pre}.face{display:block}.wordmark.ready .glyph{transition:transform 650ms cubic-bezier(.76,0,.24,1),opacity 240ms ease}.wordmark.ready .face{transition:opacity 230ms ease,transform 420ms cubic-bezier(.22,1,.36,1)}.wordmark.is-collapsed .glyph{transform:translate3d(var(--short-x,0px),0,0)}.wordmark.is-collapsed .drop{opacity:0;transform:translate3d(var(--short-x,0px),0,0) scaleX(.4);pointer-events:none}.keep{z-index:2}.drop{z-index:1}.nav-links{display:flex;gap:32px;align-items:center;font-size:14px}.nav-links>a:not(.contact-link){padding-block:10px;color:var(--secondary)}.nav-links>a:hover{color:var(--ink)}.contact-link{border:1px solid var(--rule);border-radius:99px;padding:7px 17px;display:flex;gap:18px;align-items:center;transition:background .2s}.contact-link:hover{background:var(--soft)}
     .hero{padding:78px 0 82px}.hero-meta{display:flex;align-items:center;justify-content:space-between;gap:20px;font:13px/1.6 var(--mono);letter-spacing:.045em;color:var(--secondary);text-transform:uppercase}.role{display:flex;align-items:center;gap:12px}.hero-main{display:grid;grid-template-columns:1fr 258px;align-items:center;gap:70px;margin-top:41px}.hero h1{font:400 clamp(54px,6.2vw,86px)/1.04 var(--serif);letter-spacing:-.045em;margin:0;max-width:850px}.hero h1 span{display:block}.hero h1 .second-line{margin-top:7px}.hero-note{max-width:470px;color:var(--secondary);margin:28px 0 0;line-height:1.85;font-size:15px}.hero-links{display:flex;gap:27px;align-items:center;margin-top:28px;font-size:14px}.hero-links>a{display:inline-flex;align-items:center;gap:13px;border-bottom:1px solid var(--ink);padding-bottom:4px}.hero-links>a:last-child{color:var(--secondary);border-color:var(--rule)}.art{position:relative;width:258px;height:270px;display:grid;place-items:center}.art svg{width:100%;height:auto;overflow:visible}.art .caption{position:absolute;bottom:0;right:8px;font:12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
     .section-head{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:25px 0 26px;border-top:1px solid var(--ink)}.section-label{font:13px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;margin:0;font-weight:400}.section-count{color:var(--muted);margin-left:10px}.section-head>a{font-size:13px;color:var(--secondary);display:flex;gap:10px;align-items:center}.projects{padding-bottom:90px}.project{display:grid;grid-template-columns:52px 1fr 252px;gap:22px;padding:36px 0 39px;border-top:1px solid var(--rule);position:relative}.project::before{content:"";position:absolute;inset:0 -20px;border-radius:12px;z-index:-1;background:var(--soft);opacity:0;transition:opacity .25s}.project:hover::before{opacity:1}.project-number{padding-top:8px;font:13px/1.6 var(--mono);color:var(--muted)}.project h3{font-size:27px;letter-spacing:-.045em;line-height:1.2;font-weight:500;margin:3px 0 12px;overflow-wrap:anywhere}.project p{font-size:14px;color:var(--secondary);margin:0;max-width:525px;line-height:1.8}.project-meta{margin-top:20px;display:flex;gap:16px;align-items:center;font:12px/1.5 var(--mono);color:var(--secondary);text-transform:uppercase;letter-spacing:.02em;flex-wrap:wrap}.tag{border:1px solid var(--rule);padding:3px 8px;border-radius:4px}.project-side{display:flex;align-items:center;justify-content:flex-end;gap:28px}.project-icon{width:138px;height:100px}.project-go{font-size:24px;line-height:1;width:40px;text-align:right}.project .stretched{position:absolute;inset:0;z-index:3;border-radius:8px}.project .stretched:hover~.project-side .arrow{transform:translate(3px,-3px)}
     .about{padding:0 0 100px;display:grid;grid-template-columns:1fr 2fr;gap:60px}.about .section-label{padding-top:8px}.about-copy{max-width:690px}.about-intro{font:400 31px/1.45 var(--serif);letter-spacing:-.025em;margin:0 0 23px}.about-copy>p:not(.about-intro){color:var(--secondary);font-size:14px;line-height:1.95;margin:0;max-width:580px}.about-copy .location{font:13px/1.8 var(--mono);color:var(--muted);margin-top:25px}.elsewhere{background:var(--soft);padding:58px 0 54px}.elsewhere-top{display:flex;justify-content:space-between;gap:40px;align-items:flex-start}.elsewhere h2{font:400 clamp(36px,4.5vw,56px)/1.12 var(--serif);letter-spacing:-.045em;margin:18px 0 0}.elsewhere-intro{font-size:14px;color:var(--secondary);line-height:1.8;margin:40px 0 0;max-width:290px}.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:46px}.social{border-top:1px solid #c2c0b6;padding-top:18px;display:flex;align-items:flex-start;justify-content:space-between;gap:15px;min-height:78px}.social strong{font-size:17px;font-weight:500;letter-spacing:-.025em}.social small{display:block;color:var(--secondary);font-size:13px;margin-top:3px}.social>.arrow{font-size:20px}.footer{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:93px;font:12px/1.8 var(--mono);color:var(--secondary)}.footer-brand{font:500 15px/1.5 var(--sans);letter-spacing:-.035em;color:var(--ink)}.footer-end{display:flex;gap:32px;align-items:center}.back-top{background:none;border:0;padding:8px 0;font:inherit;display:flex;gap:10px;align-items:center}
@@ -34,15 +38,21 @@ main{position:relative;z-index:2;background:var(--paper)}
 .art{height:auto;min-height:270px;display:flex;flex-direction:column;justify-content:center}
 .art svg{transition:transform .65s cubic-bezier(.22,1,.36,1);transform:perspective(600px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg))}
 .art .caption{position:static;display:block;max-width:100%;padding:0 5px;text-align:center;line-height:1.65;letter-spacing:0;margin-top:15px;text-wrap:balance}
-.orbit-motion{transform-origin:129px 125px;animation:orbit-turn 28s linear infinite;animation-play-state:paused}
-.art.is-visible .orbit-motion{animation-play-state:running}
-@keyframes orbit-turn{to{transform:rotate(360deg)}}
+.mobile-crown{transform-origin:129px 62px;animation:mobile-sway 9s ease-in-out infinite;animation-play-state:paused}
+.mobile-left{transform-origin:72px 74px;animation:mobile-left 7s ease-in-out infinite;animation-play-state:paused}
+.mobile-right{transform-origin:190px 48px;animation:mobile-right 8s ease-in-out -2s infinite;animation-play-state:paused}
+.art.is-visible .mobile-crown,.art.is-visible .mobile-left,.art.is-visible .mobile-right{animation-play-state:running}
+@keyframes mobile-sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes mobile-left{0%,100%{transform:rotate(-2.4deg)}50%{transform:rotate(2.4deg)}}
+@keyframes mobile-right{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-2deg)}}
 .project h3{font-family:var(--serif);font-size:31px;font-weight:400;letter-spacing:-.035em}
 .writing-icon{width:148px;height:116px;overflow:visible}
 .ink-write{stroke-dasharray:1;stroke-dashoffset:1;animation:write-note 7s cubic-bezier(.4,0,.2,1) infinite;animation-play-state:paused}
 .ink-write.line-two{animation-delay:.6s}.ink-write.line-three{animation-delay:1.2s}
 .writing-pen{animation:pen-travel 7s cubic-bezier(.4,0,.2,1) infinite;animation-play-state:paused;transform-origin:80px 58px}
-.project.is-visible .ink-write,.project.is-visible .writing-pen{animation-play-state:running}
+.project.is-visible .ink-write,.project.is-visible .writing-pen,.project.is-visible .wave-bar{animation-play-state:running}
+.wave-bar{transform-box:fill-box;transform-origin:center;vector-effect:non-scaling-stroke;animation:wave-pulse 1.6s ease-in-out infinite;animation-delay:calc(var(--i)*-110ms);animation-play-state:paused}
+@keyframes wave-pulse{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 @keyframes write-note{0%,8%{stroke-dashoffset:1;opacity:0}12%{opacity:1}46%,82%{stroke-dashoffset:0;opacity:1}95%,100%{stroke-dashoffset:0;opacity:0}}
 @keyframes pen-travel{0%,8%{transform:translate(-19px,-9px) rotate(-4deg)}44%{transform:translate(20px,-6px) rotate(2deg)}50%{transform:translate(-16px,6px) rotate(-3deg)}70%{transform:translate(20px,10px) rotate(2deg)}83%,100%{transform:translate(24px,3px) rotate(-8deg)}}
 .footer-cover{position:relative;z-index:2;background:var(--paper)}
@@ -55,7 +65,7 @@ main{position:relative;z-index:2;background:var(--paper)}
 .signature-bottom a{border-bottom:1px solid currentColor}
 @media(max-width:1000px){.art{min-height:260px}.writing-icon{width:116px;height:104px}}
 @media(max-width:720px){.art{display:none}.project h3{font-size:26px}.writing-icon{display:none}.hero-meta{flex-wrap:wrap;gap:10px}.hero-meta .place{display:block;width:100%;padding-left:34px;font-size:12px;letter-spacing:0}.signature-meta,.signature-bottom{font-size:12px;padding-block:15px;gap:12px}.signature-meta span:last-child{display:none}.signature-bottom span{max-width:170px}.footer-reveal{--reveal-height:clamp(220px,49vw,330px)}}
-@media(prefers-reduced-motion:reduce){.orbit-motion,.ink-write,.writing-pen{animation:none!important}.ink-write{stroke-dashoffset:0;opacity:1}.art svg{transform:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.mobile-crown,.mobile-left,.mobile-right,.wave-bar,.ink-write,.writing-pen{animation:none!important;transform:none}.ink-write{stroke-dashoffset:0;opacity:1}.art svg{transform:none!important;transition:none!important}}
 
 
 /* Editorial italic wordmarks: real text, natural proportions, no bitmap stretching. */
@@ -71,9 +81,50 @@ main{position:relative;z-index:2;background:var(--paper)}
 .signature-bottom{color:var(--secondary)}
 @media(max-width:720px){.signature-lettering{font-size:17vw;letter-spacing:-.065em}.signature-drawing{padding-inline:20px}.footer-reveal{--reveal-height:clamp(240px,49vw,330px)}}
 @media(prefers-reduced-motion:reduce){.signature-lettering{transform:none;opacity:1;transition:none}}
+
+/* 联系标题：保留原始衬线排版，整行从中线切成上下半片。 */
+.language-flip{max-width:100%}
+.split-flap{display:none}
+.language-flip.is-split-ready .split-flap{display:block;width:max-content;max-width:100%;padding:0;background:none;border:0;box-shadow:none}
+.language-flip.is-split-ready .flip-fallback{display:none}
+.split-line{display:block}
+.split-cell{--cell-height:1.12em;position:relative;display:block;width:max-content;max-width:100%;height:var(--cell-height);perspective:900px;color:var(--ink);font:inherit;background:var(--soft)}
+.split-measure{display:grid;visibility:hidden;height:var(--cell-height)}
+.split-measure>span{grid-area:1/1;white-space:pre}
+.split-half{position:absolute;left:0;right:0;height:50%;overflow:hidden;background:var(--soft);backface-visibility:hidden}
+.split-upper{top:0}
+.split-lower{bottom:0}
+.split-text{display:block;height:var(--cell-height);line-height:1.12;white-space:pre}
+.split-lower .split-text{transform:translateY(-50%)}
+/* 单张上半片绕中缝向下落，正面为旧上半句，背面为新下半句。 */
+.split-leaf{position:absolute;z-index:3;top:0;left:0;right:0;height:50%;transform-origin:center bottom;transform-style:preserve-3d;pointer-events:none}
+.split-leaf .split-half{inset:0;height:100%}
+.split-leaf .split-lower{transform:rotateX(180deg)}
+.split-cell.is-flipping .split-leaf{animation:airport-drop 640ms linear both}
+.split-cell.is-flipping>.split-upper{animation:airport-reveal-top 640ms linear both}
+.split-cell.is-flipping>.split-lower{animation:airport-hide-old-bottom 640ms linear both}
+.split-cell.is-flipping::after{content:"";position:absolute;z-index:4;left:0;right:0;top:50%;height:1px;background:#14141318;pointer-events:none}
+@keyframes airport-drop{0%{transform:rotateX(0);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}50%{transform:rotateX(-90deg);animation-timing-function:cubic-bezier(.215,.61,.355,1)}92%{transform:rotateX(-181deg)}100%{transform:rotateX(-180deg)}}
+/* 在同一个中点隐藏旧下半句、露出新上半句，避免新旧语言同时可见。 */
+@keyframes airport-reveal-top{0%,49.999%{visibility:hidden}50%,100%{visibility:visible}}
+@keyframes airport-hide-old-bottom{0%,49.999%{visibility:visible}50%,100%{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.split-cell.is-flipping .split-leaf,.split-cell.is-flipping>.split-half{animation:none}.split-cell.is-flipping::after{display:none}}
+
+/* 开场加载：复用导航文字的逐字展开节奏。 */
+html.is-loading,html.is-loading body{overflow:hidden}
+.intro{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:var(--paper);transition:transform 620ms cubic-bezier(.76,0,.24,1)}
+.intro.is-leaving{transform:translateY(-100%)}
+.intro-wordmark{font-family:Windsor,var(--serif);font-weight:400;font-size:clamp(48px,9vw,116px);letter-spacing:-.055em;transform:translateX(0)}
+.intro-wordmark.ready{transition:transform 650ms cubic-bezier(.76,0,.24,1)}
+.intro-wordmark.is-collapsed{transform:translateX(var(--intro-offset,0px))}
+@media(prefers-reduced-motion:reduce){.intro{display:none}}
 </style>
 </head>
 <body>
+  <div class="intro" id="intro" role="status" aria-label="页面加载中">
+    <span class="wordmark intro-wordmark is-collapsed" aria-hidden="true"><span class="glyph drop" data-char="I"><span class="face">I</span></span><span class="glyph drop" data-char=" "><span class="face"> </span></span><span class="glyph drop" data-char="a"><span class="face">a</span></span><span class="glyph drop" data-char="m"><span class="face">m</span></span><span class="glyph drop" data-char=" "><span class="face"> </span></span><span class="glyph keep" data-char="h" data-keep="h"><span class="face">h</span></span><span class="glyph keep" data-char="e" data-keep="e"><span class="face">e</span></span><span class="glyph keep" data-char="r" data-keep="r"><span class="face">r</span></span><span class="glyph keep" data-char="3" data-keep="3"><span class="face">3</span></span><span class="glyph drop" data-char="."><span class="face">.</span></span></span>
+  </div>
+  <noscript><style>.intro{display:none}html.is-loading,html.is-loading body{overflow:auto}</style></noscript>
   <a class="skip" href="#main">跳至主要内容</a>
   <header class="site-header">
     <nav class="wrap nav" aria-label="主导航">
@@ -95,10 +146,23 @@ main{position:relative;z-index:2;background:var(--paper)}
         </div>
         <div class="art" aria-hidden="true">
           <svg viewBox="0 0 258 248" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g class="orbit-motion"><path d="M207 60c-29-29-115-5-140 31-38 55 14 110 75 104 67-7 87-62 55-99-25-30-93-36-122-6-40 41-4 96 46 104 59 9 101-34 87-76-11-34-62-64-101-43-47 25-32 86 15 111 46 24 102 0 106-43 3-39-39-79-82-74-52 6-61 66-27 104 39 44 102 31 118-8 17-40-11-89-53-97-49-10-77 39-62 83 20 58 86 69 120 36" stroke="#3d3d3a" stroke-width="1.05" stroke-linecap="round"/>
-            <path d="M206 60c-31-25-109-2-135 33-37 50 12 108 70 101 64-8 84-60 53-96-25-29-90-32-119-5-36 36-3 91 47 100 56 10 99-32 85-72" stroke="#3d3d3a" stroke-width=".55" opacity=".55"/>
-            <circle cx="76" cy="171" r="5" fill="#d97757"/></g><path d="M76 55v141M187 50v147M51 171h168" stroke="#87867f" stroke-width=".6" opacity=".45"/>
-            <path d="m181 43 6 7 8-5" stroke="#87867f" stroke-width=".7"/>
+            <g stroke="#3d3d3a" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M129 25v37" stroke="#87867f" stroke-width=".8"/>
+              <circle cx="129" cy="23" r="2.2" fill="#3d3d3a" stroke="none"/>
+              <g class="mobile-crown">
+                <path d="M55 77 203 45"/>
+                <g class="mobile-left">
+                  <path d="M72 74v37M41 111h62M52 111v49M94 111v24"/>
+                  <circle cx="52" cy="171" r="11" fill="#d97757" stroke="none"/>
+                  <rect x="84" y="135" width="20" height="20" transform="rotate(6 94 145)" fill="#faf9f5"/>
+                </g>
+                <g class="mobile-right">
+                  <path d="M190 48v104"/>
+                  <path d="M168 174a22 22 0 0 1 44 0"/>
+                  <path d="M168 174h44" stroke="#87867f" stroke-width=".7"/>
+                </g>
+              </g>
+            </g>
           </svg><span class="caption">A WORK IN PROGRESS, ALWAYS.</span>
         </div>
       </div>
@@ -124,7 +188,7 @@ main{position:relative;z-index:2;background:var(--paper)}
       <article class="project">
         <span class="project-number">02</span><div><h3>Telegram to HomePod</h3><p>用 Telegram 控制 HomePod，播放 YouTube 音乐。<br>让熟悉的工具之间，多一点连接。</p><div class="project-meta"><span class="tag">PYTHON</span><span>TELEGRAM / YT-DLP / HOMEPOD</span></div></div>
         <a class="stretched" href="https://github.com/zhou-hack/telegram2homepod" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 Telegram to HomePod（新窗口）"></a>
-        <div class="project-side" aria-hidden="true"><svg class="project-icon" viewBox="0 0 138 100" fill="none"><path d="M19 39v22m8-32v43m8-54v64m8-49v34m8-20v8m8-25v44m8-57v65m8-47v30m8-15v8m8-26v47m8-60v70m8-57v42m8-33v23m8-16v10" stroke="#3d3d3a" stroke-width="1.1" stroke-linecap="round"/><path d="M67 17v65" stroke="#d97757" stroke-width="2"/><circle cx="67" cy="17" r="3.4" fill="#d97757"/></svg><span class="project-go arrow">↗</span></div>
+        <div class="project-side" aria-hidden="true"><svg class="project-icon" viewBox="0 0 138 100" fill="none"><g stroke="#3d3d3a" stroke-width="1.1" stroke-linecap="round"><path class="wave-bar" style="--i:0" d="M19 39v22"/><path class="wave-bar" style="--i:1" d="M27 29v43"/><path class="wave-bar" style="--i:2" d="M35 18v64"/><path class="wave-bar" style="--i:3" d="M43 33v34"/><path class="wave-bar" style="--i:4" d="M51 46v8"/><path class="wave-bar" style="--i:5" d="M59 29v44"/><path class="wave-bar" style="--i:6" d="M67 15v65"/><path class="wave-bar" style="--i:7" d="M75 33v30"/><path class="wave-bar" style="--i:8" d="M83 48v8"/><path class="wave-bar" style="--i:9" d="M91 30v47"/><path class="wave-bar" style="--i:10" d="M99 15v70"/><path class="wave-bar" style="--i:11" d="M107 28v42"/><path class="wave-bar" style="--i:12" d="M115 37v23"/><path class="wave-bar" style="--i:13" d="M123 44v10"/></g><path d="M67 17v65" stroke="#d97757" stroke-width="2"/><circle cx="67" cy="17" r="3.4" fill="#d97757"/></svg><span class="project-go arrow">↗</span></div>
       </article>
     </section>
     <section class="wrap about" id="about" aria-labelledby="about-title">
@@ -132,7 +196,7 @@ main{position:relative;z-index:2;background:var(--paper)}
       <div class="about-copy"><p class="about-intro">代码、市场，<br>以及值得保持的好奇心。</p><p>我在这里记录自己的项目与探索。从 AI Agent 到日常自动化，我关心技术如何成为真正能用的工具。专注于正在做的事，也对还不理解的事保持谦逊。</p><p class="location">BASED IN FUJIAN, CHINA.</p></div>
     </section>
     <section class="elsewhere" id="elsewhere" aria-labelledby="elsewhere-title">
-      <div class="wrap"><div class="elsewhere-top"><div><p class="section-label">ELSEWHERE / 保持连接</p><h2 id="elsewhere-title">Good things start<br>with a conversation.</h2></div><p class="elsewhere-intro">看看代码，分享想法，或只是打个招呼。<br>你可以在这些地方找到我。</p></div>
+      <div class="wrap"><div class="elsewhere-top"><div><p class="section-label">ELSEWHERE / 保持连接</p><h2 id="elsewhere-title" class="language-flip" data-english="Good things start|with a conversation." data-chinese="好事，|从一次交谈开始。" aria-label="Good things start with a conversation. 好事，从一次交谈开始。"><span class="split-flap" aria-hidden="true"></span><span class="flip-fallback">Good things start<br>with a conversation.</span></h2></div><p class="elsewhere-intro">看看代码，分享想法，或只是打个招呼。<br>你可以在这些地方找到我。</p></div>
       <div class="socials"><a class="social" href="https://github.com/zhou-hack" target="_blank" rel="noopener noreferrer"><span><strong>GitHub</strong><small>代码与开源项目 · @zhou-hack</small></span><span class="arrow" aria-hidden="true">↗</span></a><a class="social" href="https://t.me/flt231" target="_blank" rel="noopener noreferrer"><span><strong>Telegram</strong><small>交流与联系 · @flt231</small></span><span class="arrow" aria-hidden="true">↗</span></a><a class="social" href="https://www.instagram.com/zybher3/" target="_blank" rel="noopener noreferrer"><span><strong>Instagram</strong><small>日常与分享 · @zybher3</small></span><span class="arrow" aria-hidden="true">↗</span></a></div>
       </div>
     </section>
@@ -147,12 +211,12 @@ main{position:relative;z-index:2;background:var(--paper)}
   </section>
   <script>
     (() => {
-      const mark = document.querySelector('.wordmark');
-      const glyphs = [...mark.querySelectorAll('.glyph')];
+      const mark = document.querySelector('.home .wordmark');
       const context = document.createElement('canvas').getContext('2d');
       let collapsed = null;
-      function measure() {
-        const style = getComputedStyle(mark);
+      function measure(target) {
+        const glyphs = [...target.querySelectorAll('.glyph')];
+        const style = getComputedStyle(target);
         context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
         const spacing = parseFloat(style.letterSpacing) || 0;
         let fullX = 0, shortX = 0;
@@ -162,7 +226,11 @@ main{position:relative;z-index:2;background:var(--paper)}
           fullX += context.measureText(glyph.dataset.char).width + spacing;
           if (glyph.dataset.keep) shortX += context.measureText(glyph.dataset.keep).width + spacing;
         });
-        mark.style.width = `${fullX - spacing}px`;
+        target.style.width = `${fullX - spacing}px`;
+        target.style.setProperty('--intro-offset', `${(fullX - shortX) / 2}px`);
+      }
+      function measureAll() {
+        document.querySelectorAll('.wordmark').forEach(measure);
       }
       function update() {
         const next = window.scrollY > 15;
@@ -172,11 +240,125 @@ main{position:relative;z-index:2;background:var(--paper)}
         mark.dataset.state = next ? mark.dataset.compact : mark.dataset.expanded;
         mark.closest('a').setAttribute('aria-label', `${mark.dataset.state}，返回首页顶部`);
       }
-      measure(); update();
+      measureAll(); update();
       requestAnimationFrame(() => requestAnimationFrame(() => mark.classList.add('ready')));
-      document.fonts.ready.then(measure);
-      new ResizeObserver(measure).observe(document.documentElement);
+      document.fonts.ready.then(measureAll);
+      new ResizeObserver(measureAll).observe(document.documentElement);
       window.addEventListener('scroll', update, {passive:true});
+
+      const intro = document.getElementById('intro');
+      const introMark = intro.querySelector('.wordmark');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const wait = duration => new Promise(resolve => setTimeout(resolve, duration));
+      let introStarted = false;
+      function closeIntro() {
+        document.documentElement.classList.remove('is-loading');
+        intro.remove();
+      }
+      async function playIntro() {
+        if (introStarted) return;
+        introStarted = true;
+        await document.fonts.ready;
+        await wait(160);
+        measure(introMark);
+        introMark.classList.add('ready');
+        requestAnimationFrame(() => introMark.classList.remove('is-collapsed'));
+        await wait(900);
+        await wait(1000); // 字标展开后额外停留 1 秒。
+        intro.classList.add('is-leaving');
+        await wait(620);
+        closeIntro();
+      }
+      if (reduced.matches) closeIntro();
+      else if (document.readyState === 'complete') playIntro();
+      else window.addEventListener('load', playIntro, {once:true});
+
+      const languageFlip = document.querySelector('.language-flip');
+      const flap = languageFlip.querySelector('.split-flap');
+      const englishLines = languageFlip.dataset.english.split('|');
+      const chineseLines = languageFlip.dataset.chinese.split('|');
+      const flapCells = [];
+      function makeHalf(value, position) {
+        const half = document.createElement('span');
+        half.className = 'split-half ' + position;
+        const text = document.createElement('span');
+        text.className = 'split-text';
+        text.textContent = value;
+        half.append(text);
+        return half;
+      }
+      englishLines.forEach((line, rowIndex) => {
+        const row = document.createElement('span');
+        row.className = 'split-line';
+        const cell = document.createElement('span');
+        cell.className = 'split-cell';
+        // 两种语言共用自然排版尺寸，避免切换时文字挤压或容器跳动。
+        const measure = document.createElement('span');
+        measure.className = 'split-measure';
+        [line, chineseLines[rowIndex]].forEach(value => {
+          const text = document.createElement('span');
+          text.textContent = value;
+          measure.append(text);
+        });
+        const upper = makeHalf(line, 'split-upper');
+        const lower = makeHalf(line, 'split-lower');
+        const leaf = document.createElement('span');
+        leaf.className = 'split-leaf';
+        const front = makeHalf(line, 'split-upper');
+        const back = makeHalf(line, 'split-lower');
+        leaf.append(front, back);
+        cell.append(measure, upper, lower, leaf);
+        row.append(cell);
+        flap.append(row);
+        flapCells.push({cell, english:line, chinese:chineseLines[rowIndex], current:line,
+          faces:[upper, lower, front, back].map(face => face.querySelector('.split-text'))});
+      });
+      languageFlip.classList.add('is-split-ready');
+      let flapTimer = null;
+      let flapSettleTimer = null;
+      let flapVisible = false;
+      let flapChinese = false;
+      function finishFlap() {
+        flapCells.forEach(slot => {
+          const character = flapChinese ? slot.chinese : slot.english;
+          slot.faces.forEach(face => {face.textContent = character === ' ' ? '\u00a0' : character;});
+          slot.current = character;
+          slot.cell.classList.remove('is-flipping');
+        });
+      }
+      function flipNext() {
+        if (!flapVisible || document.hidden || reduced.matches) return;
+        flapChinese = !flapChinese;
+        languageFlip.classList.toggle('is-chinese', flapChinese);
+        flapCells.forEach(slot => {
+          const character = flapChinese ? slot.chinese : slot.english;
+          if (character === slot.current) return;
+          const next = character === ' ' ? '\u00a0' : character;
+          slot.faces[0].textContent = next;
+          slot.faces[3].textContent = next;
+          slot.cell.classList.add('is-flipping');
+        });
+        flapSettleTimer = setTimeout(finishFlap, 680);
+        // 一次机械落片后停留阅读，不连翻、不闪烁。
+        flapTimer = setTimeout(flipNext, 5600);
+      }
+      function syncFlaps() {
+        clearTimeout(flapTimer);
+        clearTimeout(flapSettleTimer);
+        flapTimer = null;
+        flapSettleTimer = null;
+        finishFlap();
+        if (flapVisible && !document.hidden && !reduced.matches) {
+          flapTimer = setTimeout(flipNext, 1800);
+        }
+      }
+      const flapObserver = new IntersectionObserver(([entry]) => {
+        flapVisible = entry.isIntersecting;
+        syncFlaps();
+      }, {threshold:.35});
+      flapObserver.observe(languageFlip);
+      document.addEventListener('visibilitychange', syncFlaps);
+      reduced.addEventListener('change', syncFlaps);
       document.getElementById('back-top').addEventListener('click', () => window.scrollTo({top:0}));
       document.querySelectorAll('a[href="#top"]').forEach(link => link.addEventListener('click', event => {event.preventDefault();window.scrollTo({top:0});}));
       document.getElementById('year').textContent = new Intl.DateTimeFormat('en',{year:'numeric',timeZone:'Asia/Shanghai'}).format(new Date());
